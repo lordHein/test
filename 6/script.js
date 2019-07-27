@@ -1,33 +1,33 @@
 // 'use strict';
 
+var divs = document.querySelectorAll('div');
+var link = document.querySelector('a');
 
-// var div = document.getElementById('playground');
-// console.log (div);
-
-var a = document.querySelector('a');
-var oldHref = a.getAttribute ('href');
-
-a.setAttribute('href', 'https://soundcloud.com');
-a.textContent = 'SoundC';
-a.setAttribute ('title', 'suka');
-
-
-var box1 = document.querySelector('#box1');
-var box2 = document.querySelector('#box2');
-
-box1.classList.add('red');
-var hasClass = box2.classList.contains('blue');
-console.log(hasClass);
-
-if (hasClass) {
-	box2.classList.remove('blue')	 ;
-}else{
-	box2.classList.add('blue');
-
+for (var i = 0; i < divs.length; i++) {
+	divs[i].addEventListener('click', function(event) {
+		event.stopPropagation();
+		console.log (this.getAttribute('id'));
+	});
 }
 
+link.addEventListener('click', handleLinkClick);
+
+function handleLinkClick(event) {
+	event.preventDefault();
+
+	var div = divs[0];
+
+	// if (div.style.display === 'none') {
+	// 	div.style.display = 'flex';
+	// }else{
+	// 	div.style.display = 'none';
+	// }
+
+	div.style.display = div.style.display === 'none' ? 'flex': 'none';
 
 
+	console.log(div.style.display);
+}
 
 
 
